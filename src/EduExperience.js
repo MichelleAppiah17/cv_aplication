@@ -21,7 +21,24 @@ function EducationalExperience(props){
   const isFormValid = () =>{
     return school.length && degree.length && startYear.length && endYear.length && location.length
   }
-  
+
+  const handleChange = (e) => {
+   const name = e.target.value
+   const value = e.target.name
+
+    if(name === 'school'){
+      setSchool(value)
+    }else if (name === 'degree'){
+      setDegree(value)
+    }else if(name == 'startYear'){
+      setStartyear(value)
+    }else if(name === 'endYear'){
+      setEndyear(value)
+    }else if(name == 'location'){
+      setLocation(value)
+    }
+  }
+
   return(
     <div className='educationalExperience'>
       <div className='eduExperienceDiv'>
