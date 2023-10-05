@@ -1,5 +1,6 @@
 
 import React, {useState,useEffect} from 'react';
+import EduExpDisplay from './eduDisplay';
 
 function EducationalExperience(props){
   const [school, setSchool] = useState('')
@@ -8,65 +9,79 @@ function EducationalExperience(props){
   const [endYear, setEndyear] = useState('')
   const [location, setLocation] = useState('')
 
+  const [formInfo, setFormInfo] = useState({
+    school: '',
+    degree: '',
+    startYear: '',
+    endYear: '',
+    location: '',
+  });
+
+
   useEffect(() => {
     if(props.isEditing){
-      setSchool(props.infoToEdit.school);
-      setDegree(props.infoToEdit.degree);
-      setStartyear(props.infoToEdit.startYear);
-      setEndyear(props.infoToEdit.startYear);
-      setLocation(props.infoToEdit.location)
+       setFormInfo(props.infoToEdit);
     }
   },[props.isEditing,props.infoToEdit]);
 
   const isFormValid = () =>{
-    return school.length && degree.length && startYear.length && endYear.length && location.length
-  }
+    return (
+      formInfo.school.length > 0 &&
+      formInfo.degree.length > 0 &&
+      formInfo.startYear.length > 0 &&
+      formInfo.endYear.length > 0 &&
+      formInfo.location.length > 0
+    );
+  } 
 
   const handleChange = (e) => {
-   const name = e.target.value
-   const value = e.target.name
+   const name = e.target.name
+   const value = e.target.value
 
     if(name === 'school'){
-      setSchool(value)
+      setSchool(value);
     }else if (name === 'degree'){
-      setDegree(value)
-    }else if(name == 'startYear'){
-      setStartyear(value)
+      setDegree(value);
+    }else if(name === 'startYear'){
+      setStartyear(value);
     }else if(name === 'endYear'){
-      setEndyear(value)
-    }else if(name == 'location'){
-      setLocation(value)
+      setEndyear(value);
+    }else if(name === 'location'){
+      setLocation(value);
     }
+
+    setFormInfo((prevFormInfo) => ({
+      ...prevFormInfo,
+      [name]: value,
+    }));
   }
+
 
   const submitForm = (e) => {
     e.preventDefault()
 
-    const formInfo = {
-      school,
-      degree,
-      startYear,
-      endYear,
-      location
-    };
-    props.saveInputValue(formInfo)
+    props.saveInputValue(formInfo);
+ 
 
-    setSchool('')
-    setDegree('')
-    setStartyear('')
-    setEndyear('')
-    setLocation('')
+    setFormInfo({
+      school: '',
+      degree: '',
+      startYear: '',
+      endYear: '',
+      location: '',
+    });
 
   };
 
   return(
-    <div className='educationalExperience'>
+    <div className='educationInfo'>
       <div className='eduExperienceDiv'>
         <div className='formSectionTitle'>
-          <p>Educational Experience</p>
+          <h3>Educational Experience</h3>
         </div>
       </div>
-      <form onSubmit={submitForm}>
+      <div className='eduForm'>
+       <form onSubmit={submitForm}>
         <div className='inputContainer'>
           <label htmlFor='school'>School</label>
           <input
@@ -92,7 +107,7 @@ function EducationalExperience(props){
         <div className='inputContainer'>
           <label htmlFor='startYear'>Start Year</label>
           <input
-             type='year'
+             type='month'
              id='startYear'
              name='startYear'
              placeholder='Enter Start Year'
@@ -103,7 +118,7 @@ function EducationalExperience(props){
         <div className='inputContainer'>
           <label htmlFor='endYear'>End Year</label>
           <input
-             type='year'
+             type='month'
              id='endYear'
              name='endYear'
              placeholder='Enter End Year'
@@ -119,15 +134,22 @@ function EducationalExperience(props){
              name='location'
              placeholder='Enter Location'
              value={location}
-             onRateChange={handleChange}
+             onChange={handleChange}
           />
         </div>
-        <button type='submit'>Save</button>
-      </form>
-
+        <div className='formButtons'>
+          <button>Delete</button>
+          <button type='submit'>Add</button>
+        </div>
+       </form>
+      </div>
+       <div className='resume'>
+         {isFormValid() && (
+        <EduExpDisplay educationalInfo={formInfo} />
+       )}
+       </div>
     </div>
   )
-  
 }
 
 export default EducationalExperience;

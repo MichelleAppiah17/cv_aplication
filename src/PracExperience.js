@@ -65,14 +65,15 @@ function PracticalExperience(props) {
   }
 
   return(
-    <div className='practicalExperience'>
+    <div className='practiceInfo'>
       <div className='pracExperienceDiv'>
         <div className='formTitle'>
-          <p>Pratical Experience</p>
+          <h3>Pratical Experience</h3>
         </div>
       </div>
-      <form onSubmit={submitForm}>
-        <div className='inputInfo'>
+      <div className='pracForm'>
+         <form onSubmit={submitForm}>
+        <div className='inputContainer'>
           <label htmlFor='companyName'>Company Name</label>
           <input
             type='text'
@@ -83,7 +84,7 @@ function PracticalExperience(props) {
             onChange={handleChange}
           />
         </div>
-        <div className='inputInfo'>
+        <div className='inputContainer'>
           <label htmlFor='jobTitle'>Job Title</label>
           <input
             type='text'
@@ -94,7 +95,7 @@ function PracticalExperience(props) {
             onChange={handleChange}
           />
         </div>
-        <div className='inputInfo'>
+        <div className='inputContainer'>
           <label htmlFor='startMonth'>Start Month</label>
           <input
             type='month'
@@ -105,7 +106,7 @@ function PracticalExperience(props) {
             onChange={handleChange}
           />
         </div>
-        <div className='inputInfo'>
+        <div className='inputContainer'>
           <label htmlFor='endMonth'>End Month</label>
           <input
             type='month'
@@ -116,7 +117,7 @@ function PracticalExperience(props) {
             onChange={handleChange}
           />
         </div>
-        <div className='inputInfo'>
+        <div className='inputContainer'>
           <label htmlFor='location'>Location</label>
           <input
             type='text'
@@ -127,7 +128,7 @@ function PracticalExperience(props) {
             onChange={handleChange}
           />
         </div>
-        <div className='inputInfo'>
+        <div className='inputContainer'>
           <label htmlFor='description'>Description</label>
           <input
             type='text'
@@ -140,9 +141,11 @@ function PracticalExperience(props) {
         </div>
         <div className='formButtons'>
           <button>Delete</button>
-          <button type='submit'>Save</button>
+          <button type='submit'>Add</button>
         </div>
       </form>
+      </div>
+     
     </div>
   )
 }

@@ -1,0 +1,59 @@
+.cvHeading{
+    background-color: rgb(45, 7, 63);
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: antiquewhite;
+}
+.appForms{
+    display: flex;
+    flex-direction: column;
+    margin-left: 100px;
+    margin-top: 30px;
+    
+}
+.inputContainer{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 5px;
+    padding: 10px;
+}
+input{
+    height: 20px;
+    border-radius: 8px;
+    border-color: white;
+}
+.generalForm{
+    background-color: rgb(195, 197, 197);
+    width: 300px;
+    border-radius: 10px;
+}
+.eduForm{
+    background-color: rgb(172, 169, 173);
+    width: 300px;
+    border-radius: 10px;
+}
+.pracForm{
+    background-color: rgb(183, 183, 194);
+    width: 300px;
+    border-radius: 10px;
+}
+.formButtons{
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+}    
+.formsAndResume{
+    display: flex;
+    justify-content: space-around; 
+   
+}
+.myResume{
+    background-color: rgb(223, 211, 211);
+    margin-top: 40px;
+    height: 150vh;
+    width: 50%;
+}
+

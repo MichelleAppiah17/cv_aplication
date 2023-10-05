@@ -18,13 +18,13 @@ function GeneralInfo(props) {
     }
   }, [props.isEditing, props.infoToEdit]);
 
-  const isFormValid = () => {
-    return fullName.length && email.length && phoneNumber.length && githubLink.length;
-  };
+  //const isFormValid = () => {
+   // return fullName.length && email.length && phoneNumber.length && githubLink.length;
+ // };
 
-  const toggleForm = () => {
-    setIsShown(!isShown);
-  };
+  //const toggleForm = () => {
+   // setIsShown(!isShown);
+ // };
 
   const handleChange = (e) => {
     const name = e.target.name;
@@ -63,13 +63,13 @@ function GeneralInfo(props) {
   };
 
   return (
-    <div className="generalInformation">
+    <div className="generalInfo">
       <div className="formHeadingDiv">
         <div className="formSectionTitle">
-          <p>General Information</p>
+          <h3>General Information</h3>
         </div>
       </div>
-      
+      <div className='generalForm'>
       <form onSubmit={onSubmitForm}>
         <div className='inputContainer'>
           <label htmlFor="fullName">Full Name</label>
@@ -108,15 +108,20 @@ function GeneralInfo(props) {
           <label htmlFor="githubLink">Github link</label>
           <input
             type='text'
-            placeholder='link to your github'
+            placeholder='Enter link to your github'
             id='githubLink'
             name='githubLink'
             value={githubLink}
             onChange={handleChange}
           />
         </div>
-        <button type="submit">Save</button>
+        <div className='formButtons'>
+          <button>Delete</button>
+          <button type='submit'>Add</button>
+        </div>
       </form>
+      </div>
+     
     </div>
   );
 }
