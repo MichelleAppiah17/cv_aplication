@@ -39,6 +39,26 @@ function EducationalExperience(props){
     }
   }
 
+  const submitForm = (e) => {
+    e.preventDefault()
+
+    const formInfo = {
+      school,
+      degree,
+      startYear,
+      endYear,
+      location
+    };
+    props.saveInputValue(formInfo)
+
+    setSchool('')
+    setDegree('')
+    setStartyear('')
+    setEndyear('')
+    setLocation('')
+
+  };
+
   return(
     <div className='educationalExperience'>
       <div className='eduExperienceDiv'>
@@ -46,7 +66,7 @@ function EducationalExperience(props){
           <p>Educational Experience</p>
         </div>
       </div>
-      <form>
+      <form onSubmit={submitForm}>
         <div className='inputContainer'>
           <label htmlFor='school'>School</label>
           <input
@@ -54,6 +74,8 @@ function EducationalExperience(props){
             id='school'
             name='school'
             placeholder='Enter name of school'
+            value={school}
+            onChange={handleChange}
           />
         </div>
         <div className='inputContainer'>
@@ -63,6 +85,8 @@ function EducationalExperience(props){
              id='degree'
              name='degree'
              placeholder='Enter name of degree'
+             value={degree}
+             onChange={handleChange}
           />
         </div>
         <div className='inputContainer'>
@@ -72,6 +96,8 @@ function EducationalExperience(props){
              id='startYear'
              name='startYear'
              placeholder='Enter Start Year'
+             value={startYear}
+             onChange={handleChange}
           />
         </div>
         <div className='inputContainer'>
@@ -81,6 +107,8 @@ function EducationalExperience(props){
              id='endYear'
              name='endYear'
              placeholder='Enter End Year'
+             value={endYear}
+             onChange={handleChange}
           />
         </div>
         <div className='inputContainer'>
@@ -90,8 +118,11 @@ function EducationalExperience(props){
              id='location'
              name='location'
              placeholder='Enter Location'
+             value={location}
+             onRateChange={handleChange}
           />
         </div>
+        <button type='submit'>Save</button>
       </form>
 
     </div>
