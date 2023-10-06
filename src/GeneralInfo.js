@@ -1,70 +1,51 @@
 import React, { useState, useEffect } from 'react';
 
 function GeneralInfo(props) {
-  const [fullName, setFullName] = useState('');
-  const [email, setEmail] = useState('');
-  const [phoneNumber, setPhoneNumber] = useState('');
-  const [githubLink, setGithubLink] = useState('');
-  const [linkedInLink, setLinkedInLink] = useState('');
-  const [isFormVisible, setIsFormVisible] = useState(false);
-
-  const[formInfo,setFormInfo] = useState({
+  const [formInfo, setFormInfo] = useState({
     fullName: '',
     email: '',
     phoneNumber: '',
     githubLink: '',
     linkedInLink: '',
+  });
 
-  })
+  const [isFormVisible, setIsFormVisible] = useState(false);
 
   useEffect(() => {
     if (props.isEditing) {
-      setFormInfo(props.infoToEdit)
+      setFormInfo(props.infoToEdit);
     }
   }, [props.isEditing, props.infoToEdit]);
 
   const handleChange = (e) => {
-    const name = e.target.name;
-    const value = e.target.value;
-
-    if (name === 'fullName') {
-      setFullName(value);
-    } else if (name === 'email') {
-      setEmail(value);
-    } else if (name === 'phoneNumber') {
-      setPhoneNumber(value);
-    } else if (name === 'githubLink') {
-      setGithubLink(value);
-    }else if (name === 'linkedInLink') {
-      setLinkedInLink(value);
-    }
+    const { name, value } = e.target;
 
     setFormInfo((prevFormInfo) => ({
       ...prevFormInfo,
       [name]: value,
-    }))
+    }));
   };
 
-   const toggleFormVisibility = () => {
+  const toggleFormVisibility = () => {
     setIsFormVisible(!isFormVisible);
   };
 
   const onSubmitForm = (e) => {
     e.preventDefault();
 
-     props.saveInputValue(formInfo);
+    props.saveInputValue(formInfo);
 
     setFormInfo({
-       fullName: '',
-       email: '',
-       phoneNumber: '',
-       phoneNumber: '',
-       githubLink: '',
-       linkedInLink: '',
-    })
+      fullName: '',
+      email: '',
+      phoneNumber: '',
+      githubLink: '',
+      linkedInLink: '',
+    });
 
-     setIsFormVisible(false);
+    setIsFormVisible(false);
   };
+
 
   return (
     <div className="generalInfo">

@@ -1,15 +1,6 @@
+import React, { useState, useEffect } from 'react';
 
-import React, {useState,useEffect} from 'react';
-import EduExpDisplay from './eduDisplay';
-
-function EducationalExperience(props){
-  const [school, setSchool] = useState('')
-  const [degree, setDegree] = useState('')
-  const [startYear, setStartyear] = useState('')
-  const [endYear, setEndyear] = useState('')
-  const [location, setLocation] = useState('')
-  const [isFormVisible, setIsFormVisible] = useState(false);
-
+function EducationalExperience(props) {
   const [formInfo, setFormInfo] = useState({
     school: '',
     degree: '',
@@ -18,47 +9,31 @@ function EducationalExperience(props){
     location: '',
   });
 
-  useEffect(() => {
-    if(props.isEditing){
-       setFormInfo(props.infoToEdit);
-    }
-  },[props.isEditing,props.infoToEdit]);
+  const [isFormVisible, setIsFormVisible] = useState(false);
 
- 
+  useEffect(() => {
+    if (props.isEditing) {
+      setFormInfo(props.infoToEdit);
+    }
+  }, [props.isEditing, props.infoToEdit]);
 
   const handleChange = (e) => {
-   const name = e.target.name
-   const value = e.target.value
-
-    if(name === 'school'){
-      setSchool(value);
-    }else if (name === 'degree'){
-      setDegree(value);
-    }else if(name === 'startYear'){
-      setStartyear(value);
-    }else if(name === 'endYear'){
-      setEndyear(value);
-    }else if(name === 'location'){
-      setLocation(value);
-    }
+    const { name, value } = e.target;
 
     setFormInfo((prevFormInfo) => ({
       ...prevFormInfo,
       [name]: value,
     }));
-  }
+  };
 
-  
   const toggleFormVisibility = () => {
     setIsFormVisible(!isFormVisible);
   };
 
-
   const submitForm = (e) => {
-    e.preventDefault()
+    e.preventDefault();
 
     props.saveInputValue(formInfo);
- 
 
     setFormInfo({
       school: '',
@@ -68,8 +43,7 @@ function EducationalExperience(props){
       location: '',
     });
 
-     setIsFormVisible(false);
-
+    setIsFormVisible(false);
   };
 
   return(
