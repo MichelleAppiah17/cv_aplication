@@ -9,21 +9,21 @@ function PracticalExperience(props) {
   const [location, setLocation] = useState('')
   const [description, setDescription] = useState('')
 
-  useEffect(() => {
-    if(props.isEditing){
-      setCompanyName(props.infoToEdit.companyName)
-      SetJobtitle(props.infoToEdit.jobTitle)
-      setStartmonth(props.infoToEdit.startMonth)
-      setEndmonth(props.infoToEdit.endMonth)
-      setLocation(props.infoToEdit.location)
-      setDescription(props.infoToEdit.description)
-    }
-  },[props.isEditing, props.infoToEdit])
+  const[formInfo,setFormInfo] = useState({
+    companyName: '',
+    jobTitle: '',
+    startMonth: '',
+    endMonth: '',
+    location: '',
+    description: '',
 
-  const isFormValid = () => {
-    return companyName.length && jobTitle.length && startMonth.length &&
-    endMonth.length && location.length && description.length
-  }
+  })
+
+  useEffect(() => {
+    if (props.isEditing) {
+      setFormInfo(props.infoToEdit)
+    }
+  }, [props.isEditing, props.infoToEdit]);
 
   const handleChange = (e) => {
     const name = e.target.name
@@ -42,27 +42,27 @@ function PracticalExperience(props) {
     }else if(name === 'description'){
       setDescription(value)
     }
+
+    setFormInfo((prevFormInfo) => ({
+      ...prevFormInfo,
+      [name]: value,
+    }))
   };
 
   const submitForm = (e) => {
     e.preventDefault();
-    const formInfo = {
-      companyName,
-      jobTitle,
-      startMonth,
-      endMonth,
-      location,
-      description
-    }
 
-    props.saveInputValue(formInfo);
+     props.saveInputValue(formInfo);
 
-    setCompanyName('')
-    setStartmonth('')
-    setEndmonth('')
-    setLocation('')
-    setDescription('')
-  }
+    setFormInfo({
+        companyName: '',
+        jobTitle: '',
+        startMonth: '',
+        endMonth: '',
+        location: '',
+        description: '',
+    })
+  };
 
   return(
     <div className='practiceInfo'>
@@ -80,7 +80,7 @@ function PracticalExperience(props) {
             id='companyName'
             name='companyName'
             placeholder='Enter name of Company'
-            value={companyName}
+            value={formInfo.companyName}
             onChange={handleChange}
           />
         </div>
@@ -91,7 +91,7 @@ function PracticalExperience(props) {
             id='jobTitle'
             name='jobTitle'
             placeholder='Enter Title of Job'
-            value={companyName}
+            value={formInfo.jobTitle}
             onChange={handleChange}
           />
         </div>
@@ -102,7 +102,7 @@ function PracticalExperience(props) {
             id='startMonth'
             name='startMonth'
             placeholder='Enter Start Month'
-            value={startMonth}
+            value={formInfo.startMonth}
             onChange={handleChange}
           />
         </div>
@@ -113,7 +113,7 @@ function PracticalExperience(props) {
             id='endMonth'
             name='endMonth'
             placeholder='Enter End Month'
-            value={endMonth}
+            value={formInfo.endMonth}
             onChange={handleChange}
           />
         </div>
@@ -124,7 +124,7 @@ function PracticalExperience(props) {
             id='location'
             name='location'
             placeholder='Enter Location'
-            value={location}
+            value={formInfo.location}
             onChange={handleChange}
           />
         </div>
@@ -135,7 +135,7 @@ function PracticalExperience(props) {
             id='description'
             name='description'
             placeholder='Enter Description'
-            value={location}
+            value={formInfo.description}
             onChange={handleChange}
           />
         </div>
