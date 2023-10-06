@@ -6,10 +6,15 @@ import Resume from './resume';
 
 function App() {
   const [educationalExperiences, setEducationalExperiences] = useState([]);
+  const [generalInformation, setGeneralInformation] = useState([]);
 
   const saveEducationalData = (formData) => {
     setEducationalExperiences([...educationalExperiences, formData]);
   };
+
+  const saveGeneralInfoData = (formData) => {
+    setGeneralInformation([...generalInformation, formData]);
+  }
 
   return (
     <div className='App'>
@@ -18,10 +23,11 @@ function App() {
       </div>
       <div className='formsAndResume'>
         <div className='appForms'>
-          <GeneralInfo />
+          <GeneralInfo saveInputValue={saveGeneralInfoData} />
           <EducationalExperience saveInputValue={saveEducationalData} />
           <PracticalExperience />
         </div>
+        <Resume generalInformation={generalInformation} />
         <Resume educationalExperiences={educationalExperiences} />
       </div>
     </div>
@@ -29,4 +35,5 @@ function App() {
 }
 
 export default App;
+
 

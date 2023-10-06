@@ -10,7 +10,6 @@ function GeneralInfo(props) {
     fullName: '',
     email: '',
     phoneNumber: '',
-    phoneNumber: '',
     githubLink: '',
 
   })
@@ -44,7 +43,7 @@ function GeneralInfo(props) {
   const onSubmitForm = (e) => {
     e.preventDefault();
 
-    props.saveInputValue(formInfo);
+     props.saveInputValue(formInfo);
 
     setFormInfo({
        fullName: '',
