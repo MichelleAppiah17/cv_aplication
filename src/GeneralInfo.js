@@ -5,26 +5,21 @@ function GeneralInfo(props) {
   const [email, setEmail] = useState('');
   const [phoneNumber, setPhoneNumber] = useState('');
   const [githubLink, setGithubLink] = useState('');
-  const [form, setForm] = useState('generalInfoForm');
-  const [isShown, setIsShown] = useState(false);
+
+  const[formInfo,setFormInfo] = useState({
+    fullName: '',
+    email: '',
+    phoneNumber: '',
+    phoneNumber: '',
+    githubLink: '',
+
+  })
 
   useEffect(() => {
     if (props.isEditing) {
-      setFullName(props.infoToEdit.fullName);
-      setEmail(props.infoToEdit.email);
-      setPhoneNumber(props.infoToEdit.phoneNumber);
-      setGithubLink(props.infoToEdit.githubLink);
-      setIsShown(true);
+      setFormInfo(props.infoToEdit)
     }
   }, [props.isEditing, props.infoToEdit]);
-
-  //const isFormValid = () => {
-   // return fullName.length && email.length && phoneNumber.length && githubLink.length;
- // };
-
-  //const toggleForm = () => {
-   // setIsShown(!isShown);
- // };
 
   const handleChange = (e) => {
     const name = e.target.name;
@@ -39,27 +34,25 @@ function GeneralInfo(props) {
     } else if (name === 'githubLink') {
       setGithubLink(value);
     }
+
+    setFormInfo((prevFormInfo) => ({
+      ...prevFormInfo,
+      [name]: value,
+    }))
   };
 
   const onSubmitForm = (e) => {
     e.preventDefault();
 
-    const formInfo = {
-      fullName,
-      email,
-      phoneNumber,
-      githubLink,
-      form,
-      isShown,
-    };
-
     props.saveInputValue(formInfo);
 
-    setFullName('');
-    setEmail('');
-    setPhoneNumber('');
-    setGithubLink('');
-    setIsShown(false);
+    setFormInfo({
+       fullName: '',
+       email: '',
+       phoneNumber: '',
+       phoneNumber: '',
+       githubLink: '',
+    })
   };
 
   return (
@@ -78,7 +71,7 @@ function GeneralInfo(props) {
             placeholder='Enter your full name'
             id='fullName'
             name='fullName'
-            value={fullName}
+            value={formInfo.fullName}
             onChange={handleChange}
           />
         </div>
@@ -89,7 +82,7 @@ function GeneralInfo(props) {
             placeholder='Enter your email'
             id='email'
             name='email'
-            value={email}
+            value={formInfo.email}
             onChange={handleChange}
           />
         </div>
@@ -100,7 +93,7 @@ function GeneralInfo(props) {
             placeholder='Enter your phone number'
             id='phoneNumber'
             name='phoneNumber'
-            value={phoneNumber}
+            value={formInfo.phoneNumber}
             onChange={handleChange}
           />
         </div>
@@ -111,7 +104,7 @@ function GeneralInfo(props) {
             placeholder='Enter link to your github'
             id='githubLink'
             name='githubLink'
-            value={githubLink}
+            value={formInfo.githubLink}
             onChange={handleChange}
           />
         </div>

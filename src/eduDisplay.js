@@ -5,11 +5,19 @@ function EduExpDisplay({ educationalInfo }) {
 
   return (
     <div className="eduDisplay">
-      <h3>Education</h3>
-      <p>{startYear} - {endYear}</p>
-      <p>{location}</p>
-      <p>{school}</p>
-      <p>{degree}</p>
+      <div className='eduHeading'>
+        <h3>Education</h3>
+      </div>
+      <div className='eduContent'>
+        <div>
+          <p>{startYear} - {endYear}</p>
+          <p>{location}</p>
+        </div>
+        <div>
+          <h4>{school}</h4>
+          <p>{degree}</p>
+        </div>
+      </div>
     </div>
   );
 }

@@ -17,22 +17,13 @@ function EducationalExperience(props){
     location: '',
   });
 
-
   useEffect(() => {
     if(props.isEditing){
        setFormInfo(props.infoToEdit);
     }
   },[props.isEditing,props.infoToEdit]);
 
-  const isFormValid = () =>{
-    return (
-      formInfo.school.length > 0 &&
-      formInfo.degree.length > 0 &&
-      formInfo.startYear.length > 0 &&
-      formInfo.endYear.length > 0 &&
-      formInfo.location.length > 0
-    );
-  } 
+ 
 
   const handleChange = (e) => {
    const name = e.target.name
@@ -89,7 +80,7 @@ function EducationalExperience(props){
             id='school'
             name='school'
             placeholder='Enter name of school'
-            value={school}
+            value={formInfo.school}
             onChange={handleChange}
           />
         </div>
@@ -100,7 +91,7 @@ function EducationalExperience(props){
              id='degree'
              name='degree'
              placeholder='Enter name of degree'
-             value={degree}
+             value={formInfo.degree}
              onChange={handleChange}
           />
         </div>
@@ -111,7 +102,7 @@ function EducationalExperience(props){
              id='startYear'
              name='startYear'
              placeholder='Enter Start Year'
-             value={startYear}
+             value={formInfo.startYear}
              onChange={handleChange}
           />
         </div>
@@ -122,7 +113,7 @@ function EducationalExperience(props){
              id='endYear'
              name='endYear'
              placeholder='Enter End Year'
-             value={endYear}
+             value={formInfo.endYear}
              onChange={handleChange}
           />
         </div>
@@ -133,7 +124,7 @@ function EducationalExperience(props){
              id='location'
              name='location'
              placeholder='Enter Location'
-             value={location}
+             value={formInfo.location}
              onChange={handleChange}
           />
         </div>
@@ -143,11 +134,6 @@ function EducationalExperience(props){
         </div>
        </form>
       </div>
-       <div className='resume'>
-         {isFormValid() && (
-        <EduExpDisplay educationalInfo={formInfo} />
-       )}
-       </div>
     </div>
   )
 }

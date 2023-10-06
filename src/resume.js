@@ -1,12 +1,14 @@
 import React from 'react';
+import EduExpDisplay from './eduDisplay';
 
-function Resume() {
-    return(
-        <div className='myResume'>
-            
-        </div>
-    )
-    
+function Resume({ educationalExperiences }) {
+  return (
+    <div className='myResume'>
+      {educationalExperiences.map((edu, index) => (
+        <EduExpDisplay key={index} educationalInfo={edu} />
+      ))}
+    </div>
+  );
 }
 
 export default Resume;

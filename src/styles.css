@@ -56,4 +56,19 @@ input{
     height: 150vh;
     width: 50%;
 }
-
+.eduDisplay{
+    margin: 20px;
+    line-height: 3px;
+}
+.eduHeading{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(237, 243, 154);
+}
+.eduContent{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 20em;
+}
