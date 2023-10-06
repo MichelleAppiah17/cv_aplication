@@ -25,11 +25,27 @@ input{
     border-radius: 8px;
     border-color: white;
 }
+.formTitle{
+    background-color: rgb(195, 197, 197);
+}
+.genformTitle{
+    padding: 1px 20px;
+    background-color: rgb(195, 197, 197);
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
 .generalForm{
     background-color: rgb(195, 197, 197);
     width: 300px;
     border-radius: 10px;
     box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.1);
+}
+.eduformTitle{
+    padding: 1px 20px;
+    background-color: rgb(172, 169, 173);
+    border-radius: 10px;
+    margin-bottom: 10px;
+    margin-top: 10px;
 }
 .eduForm{
     background-color: rgb(172, 169, 173);
@@ -37,7 +53,17 @@ input{
     border-radius: 10px;
     box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.1);
 }
+.pracFormTitle{
+    padding: 1px 20px;
+    background-color: rgb(183, 183, 194);
+    border-radius: 10px;
+}
+.formToggleArrow{
+    padding-left: 40px;
+    cursor: pointer;
+}
 .pracForm{
+    margin-top: 20px;
     background-color: rgb(183, 183, 194);
     width: 300px;
     border-radius: 10px;
@@ -53,6 +79,7 @@ input{
     display: flex;
     justify-content: space-around; 
     background-color: rgba(187, 187, 183, 0.6);
+    height: 100%;
    
 }
 .myResume{

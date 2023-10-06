@@ -75,7 +75,7 @@ function EducationalExperience(props){
   return(
     <div className='educationInfo'>
       <div className='eduExperienceDiv'>
-        <div className='formSectionTitle'>
+        <div className='eduformTitle'>
           <h3>
             Educational Experience{' '}
              <span

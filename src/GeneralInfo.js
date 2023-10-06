@@ -69,7 +69,7 @@ function GeneralInfo(props) {
   return (
     <div className="generalInfo">
       <div className="formHeadingDiv">
-        <div className="formSectionTitle">
+        <div className="genformTitle">
           <h3>
             General Information{' '}
              <span

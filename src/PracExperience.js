@@ -1,4 +1,3 @@
-
 import React, {useState, useEffect} from 'react';
 
 function PracticalExperience(props) {
@@ -74,7 +73,7 @@ function PracticalExperience(props) {
   return(
     <div className='practiceInfo'>
       <div className='pracExperienceDiv'>
-        <div className='formTitle'>
+        <div className='pracFormTitle'>
           <h3>
             Practical Experience{' '}
              <span
@@ -146,7 +145,7 @@ function PracticalExperience(props) {
         </div>
         <div className='inputContainer'>
           <label htmlFor='description'>Description</label>
-          <input
+          <textarea
             type='text'
             id='description'
             name='description'

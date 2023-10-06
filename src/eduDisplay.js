@@ -1,13 +1,15 @@
 import React from 'react';
 
-function EduExpDisplay({ educationalInfo }) {
+function EduExpDisplay({ educationalInfo, isFirstSubmission }) {
   const { school, degree, startYear, endYear, location } = educationalInfo;
 
   return (
     <div className="eduDisplay">
+      {isFirstSubmission && ( 
       <div className='eduHeading'>
         <h3>Education</h3>
       </div>
+      )}
       <div className='eduContent'>
         <div>
           <p>{startYear} - {endYear}</p>

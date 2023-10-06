@@ -8,18 +8,18 @@ function Resume({ educationalExperiences, generalInformation, practicalExperienc
     <div className='myResume'>
         <div className='forGenInfo'>
         {generalInformation && generalInformation.map((gen, index) => (
-          <GenInfoDisplay key={index} generalInfo={gen} />
+          <GenInfoDisplay key={index} generalInfo={gen} isFirstSubmission={index === 0} />
         ))}
       </div>
       <div>
         <div className='forEduInfo'>
         {educationalExperiences && educationalExperiences.map((edu, index) => (
-          <EduExpDisplay key={index} educationalInfo={edu} />
+          <EduExpDisplay key={index} educationalInfo={edu} isFirstSubmission={index === 0} />
         ))}
       </div>
       <div className='forPracInfo'>
         {practicalExperiences && practicalExperiences.map((prac, index) => (
-          <PracInfoDisplay key={index} practicalInfo={prac} />
+          <PracInfoDisplay key={index} practicalInfo={prac} isFirstSubmission={index === 0} />
         ))}
       </div>
       </div>
