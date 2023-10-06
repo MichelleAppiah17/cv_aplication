@@ -6,6 +6,7 @@
     justify-content: center;
     color: antiquewhite;
 }
+
 .appForms{
     display: flex;
     flex-direction: column;
@@ -28,16 +29,19 @@ input{
     background-color: rgb(195, 197, 197);
     width: 300px;
     border-radius: 10px;
+    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.1);
 }
 .eduForm{
     background-color: rgb(172, 169, 173);
     width: 300px;
     border-radius: 10px;
+    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.1);
 }
 .pracForm{
     background-color: rgb(183, 183, 194);
     width: 300px;
     border-radius: 10px;
+    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.1);
 }
 .formButtons{
     display: flex;
@@ -48,27 +52,49 @@ input{
 .formsAndResume{
     display: flex;
     justify-content: space-around; 
+    background-color: rgba(187, 187, 183, 0.6);
    
 }
 .myResume{
-    background-color: rgb(223, 211, 211);
+    background-color: rgb(253, 248, 248);
     margin-top: 40px;
     height: 150vh;
-    width: 50%;
+    width: 50em;
+    box-shadow: 10px 10px 10px 10px rgba(0, 0, 0, 0.1);
 }
-.eduDisplay{
-    margin: 20px;
-    line-height: 3px;
+.eduDisplay, .pracInfoDisplay{
+    padding: 20px;
 }
-.eduHeading{
+.eduHeading, .pracInfoHeading{
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: rgb(237, 243, 154);
+    height: 40px;
+    background-color: rgb(57, 57, 65, 0.1);
 }
-.eduContent{
+.eduContent, .pracInfoContent{
     display: flex;
     justify-content: space-around;
+    line-height: 15px;
+    
+}
+.genInfoDisplay{
+    background-color: rgb(57, 57, 65);
+    padding: 20px;
+    color: azure;
+}
+.genInfoHeading{
+    display: flex;
+    justify-content: center;
     align-items: center;
-    width: 20em;
+    font-size: larger;
+}
+.genInfoContent{
+    display: flex;
+    justify-content: space-around;
+    line-height: 1px;
+    flex-wrap: wrap;
+}
+p{
+    font-size: large;
 }

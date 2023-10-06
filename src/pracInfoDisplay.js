@@ -9,13 +9,15 @@ function PracInfoDisplay({ practicalInfo }) {
         <h3>Practical Experience</h3>
       </div>
       <div className='pracInfoContent'>
-        <p>{companyName}</p>
-        <p>{jobTitle}</p>
-        <p>{startMonth}</p>
-        <p>{endMonth}</p>
-        <p>{location}</p>
-        <p>{description }</p>
-        
+        <div>
+          <p>{startMonth} - {endMonth}</p>
+          <p>{location}</p>
+        </div>
+        <div>
+         <h4>{companyName}</h4>
+         <p>{jobTitle}</p>
+         <p>{description}</p>
+        </div> 
       </div>
     </div>
   );

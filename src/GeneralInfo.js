@@ -5,12 +5,15 @@ function GeneralInfo(props) {
   const [email, setEmail] = useState('');
   const [phoneNumber, setPhoneNumber] = useState('');
   const [githubLink, setGithubLink] = useState('');
+  const [linkedInLink, setLinkedInLink] = useState('');
+  const [isFormVisible, setIsFormVisible] = useState(false);
 
   const[formInfo,setFormInfo] = useState({
     fullName: '',
     email: '',
     phoneNumber: '',
     githubLink: '',
+    linkedInLink: '',
 
   })
 
@@ -32,12 +35,18 @@ function GeneralInfo(props) {
       setPhoneNumber(value);
     } else if (name === 'githubLink') {
       setGithubLink(value);
+    }else if (name === 'linkedInLink') {
+      setLinkedInLink(value);
     }
 
     setFormInfo((prevFormInfo) => ({
       ...prevFormInfo,
       [name]: value,
     }))
+  };
+
+   const toggleFormVisibility = () => {
+    setIsFormVisible(!isFormVisible);
   };
 
   const onSubmitForm = (e) => {
@@ -51,16 +60,28 @@ function GeneralInfo(props) {
        phoneNumber: '',
        phoneNumber: '',
        githubLink: '',
+       linkedInLink: '',
     })
+
+     setIsFormVisible(false);
   };
 
   return (
     <div className="generalInfo">
       <div className="formHeadingDiv">
         <div className="formSectionTitle">
-          <h3>General Information</h3>
+          <h3>
+            General Information{' '}
+             <span
+              className='formToggleArrow'
+              onClick={toggleFormVisibility}
+            >
+              {isFormVisible ? '▼'  : '▲'}
+            </span>
+          </h3>
         </div>
       </div>
+      {isFormVisible && (
       <div className='generalForm'>
       <form onSubmit={onSubmitForm}>
         <div className='inputContainer'>
@@ -107,13 +128,24 @@ function GeneralInfo(props) {
             onChange={handleChange}
           />
         </div>
+        <div className='inputContainer'>
+          <label htmlFor="linkedInLink">LinkedIn link</label>
+          <input
+            type='text'
+            placeholder='Enter link to your linkedIn'
+            id='linkedInLink'
+            name='linkedInLink'
+            value={formInfo.linkedInLink}
+            onChange={handleChange}
+          />
+        </div>
         <div className='formButtons'>
           <button>Delete</button>
           <button type='submit'>Add</button>
         </div>
       </form>
       </div>
-     
+     )} 
     </div>
   );
 }

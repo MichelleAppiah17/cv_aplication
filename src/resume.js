@@ -11,7 +11,8 @@ function Resume({ educationalExperiences, generalInformation, practicalExperienc
           <GenInfoDisplay key={index} generalInfo={gen} />
         ))}
       </div>
-      <div className='forEduInfo'>
+      <div>
+        <div className='forEduInfo'>
         {educationalExperiences && educationalExperiences.map((edu, index) => (
           <EduExpDisplay key={index} educationalInfo={edu} />
         ))}
@@ -21,6 +22,8 @@ function Resume({ educationalExperiences, generalInformation, practicalExperienc
           <PracInfoDisplay key={index} practicalInfo={prac} />
         ))}
       </div>
+      </div>
+      
     </div>
   );
 }

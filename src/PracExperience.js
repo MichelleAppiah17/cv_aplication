@@ -8,6 +8,7 @@ function PracticalExperience(props) {
   const [endMonth, setEndmonth] = useState('')
   const [location, setLocation] = useState('')
   const [description, setDescription] = useState('')
+  const [isFormVisible, setIsFormVisible] = useState(false);
 
   const[formInfo,setFormInfo] = useState({
     companyName: '',
@@ -49,6 +50,10 @@ function PracticalExperience(props) {
     }))
   };
 
+   const toggleFormVisibility = () => {
+    setIsFormVisible(!isFormVisible);
+  };
+
   const submitForm = (e) => {
     e.preventDefault();
 
@@ -62,18 +67,29 @@ function PracticalExperience(props) {
         location: '',
         description: '',
     })
+
+     setIsFormVisible(false);
   };
 
   return(
     <div className='practiceInfo'>
       <div className='pracExperienceDiv'>
         <div className='formTitle'>
-          <h3>Pratical Experience</h3>
+          <h3>
+            Practical Experience{' '}
+             <span
+              className='formToggleArrow'
+              onClick={toggleFormVisibility}
+            >
+              {isFormVisible ? '▼'  : '▲'}
+            </span>
+          </h3>
         </div>
       </div>
+      {isFormVisible && (
       <div className='pracForm'>
-         <form onSubmit={submitForm}>
-        <div className='inputContainer'>
+        <form onSubmit={submitForm}>
+         <div className='inputContainer'>
           <label htmlFor='companyName'>Company Name</label>
           <input
             type='text'
@@ -145,7 +161,7 @@ function PracticalExperience(props) {
         </div>
       </form>
       </div>
-     
+     )} 
     </div>
   )
 }

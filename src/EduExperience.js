@@ -8,6 +8,7 @@ function EducationalExperience(props){
   const [startYear, setStartyear] = useState('')
   const [endYear, setEndyear] = useState('')
   const [location, setLocation] = useState('')
+  const [isFormVisible, setIsFormVisible] = useState(false);
 
   const [formInfo, setFormInfo] = useState({
     school: '',
@@ -47,6 +48,11 @@ function EducationalExperience(props){
     }));
   }
 
+  
+  const toggleFormVisibility = () => {
+    setIsFormVisible(!isFormVisible);
+  };
+
 
   const submitForm = (e) => {
     e.preventDefault()
@@ -62,15 +68,26 @@ function EducationalExperience(props){
       location: '',
     });
 
+     setIsFormVisible(false);
+
   };
 
   return(
     <div className='educationInfo'>
       <div className='eduExperienceDiv'>
         <div className='formSectionTitle'>
-          <h3>Educational Experience</h3>
+          <h3>
+            Educational Experience{' '}
+             <span
+              className='formToggleArrow'
+              onClick={toggleFormVisibility}
+            >
+              {isFormVisible ? '▼'  : '▲'}
+            </span>
+          </h3>
         </div>
       </div>
+       {isFormVisible && (
       <div className='eduForm'>
        <form onSubmit={submitForm}>
         <div className='inputContainer'>
@@ -134,6 +151,7 @@ function EducationalExperience(props){
         </div>
        </form>
       </div>
+     )} 
     </div>
   )
 }
